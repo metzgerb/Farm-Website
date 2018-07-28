@@ -1,0 +1,23 @@
+<h1>POST Request Received</h1>
+
+{{#if dataList}}
+<h3>Query String Data:</h3>
+<ul>
+  {{#each dataList}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+{{else}}
+<h3>You did not send any data in the query string of the POST request.</h3>
+{{/if}}
+
+{{#if bodyList}}
+<h3>Body Data:</h3>
+<ul>
+  {{#each bodyList}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+{{else}}
+<h3>You did not send any data in the body of the POST request.</h3>
+{{/if}}

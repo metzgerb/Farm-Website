@@ -1,0 +1,47 @@
+/*table styles*/
+table {
+  border: solid;
+  border-collapse: collapse;
+}
+
+td {
+  border-style: solid;
+}
+
+th {
+  border-style: solid;
+}
+
+tbody tr:nth-of-type(odd) {
+   background-color: coral;
+}
+
+tbody tr:nth-of-type(even) {
+   background-color: yellow;
+}
+
+tbody th {
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+/*div styles*/
+.outer-content {
+   background-color: pink;
+   margin-top: 20px;
+   height: 100px;
+   width: 75%;
+   position:relative;
+}
+
+.inner-content {
+   background-color: blue;
+   height: 50px;
+   width: 75%; 
+   position: absolute;
+   top: 25%;
+   left: 12.5%;
+   text-align:center;
+   line-height: 50px;
+}
