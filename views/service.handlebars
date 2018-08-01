@@ -1,23 +1,16 @@
 <h1>Service</h1>
 
-{{#if dataList}}
-<h3>Query String Data:</h3>
+<p>Farm Equipment Sales, Service and Repair offers in-garage service and repair as well as on-site calls.</p>
+<p>We will come to you when you need it most.</p>
+<br>
+<p>Check out our competitive labor pricing below! (parts are billed separately)</p>
+<ul class="services">
+   <li>In-Garage Service and Repair:</li>
+   <ul>
+      <li>March-June: $30/hour</li>
+      <li>July-August: $25/hour</li>
+      <li>September-November: $35/hour</li>
+      <li>December-February: $25/hour</li>
+   </ul>
+   <li>On-Site Calls:</li>
 <ul>
-  {{#each dataList}}
-    <li>{{this.name}}: {{this.value}}
-  {{/each}}
-</ul>
-{{else}}
-<h3>You did not send any data in the query string of the POST request.</h3>
-{{/if}}
-
-{{#if bodyList}}
-<h3>Body Data:</h3>
-<ul>
-  {{#each bodyList}}
-    <li>{{this.name}}: {{this.value}}
-  {{/each}}
-</ul>
-{{else}}
-<h3>You did not send any data in the body of the POST request.</h3>
-{{/if}}

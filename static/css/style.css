@@ -45,3 +45,20 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 50px;
 }
+
+h1 {
+   text-align: center;
+}
+
+p {
+   padding-left: 15px;
+}
+
+ul.services {
+   padding-top: 20px;
+   padding-left: 30px;
+}
+
+ul.services ul {
+   padding-left: 30px;
+}
