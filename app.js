@@ -12,33 +12,32 @@ app.set('view engine', 'handlebars');
 app.set('port', 8545);
 app.use(express.static('static'));
 
+//render GET for homepage
 app.get('/',function(req,res){
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
-  }
   var context = {};
-  context.dataList = qParams;
-  res.render('get-loopback', context);
+  context.dataList = "";
+  res.render('home', context);
 });
 
-app.post('/',function(req,res){
-  //store query parameters
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
-  }
-  
-  //store body parameters
-  var bParams = [];
-  for (var p in req.body){
-    bParams.push({'name':p,'value':req.body[p]})
-  }
-  
+//render GET for Sales
+app.get('/sales',function(req,res){
   var context = {};
-  context.dataList = qParams;
-  context.bodyList = bParams;
-  res.render('post-loopback', context);
+  context.dataList = "";
+  res.render('sales', context);
+});
+
+//render GET for Service
+app.get('/service',function(req,res){
+  var context = {};
+  context.dataList = "";
+  res.render('service', context);
+});
+
+//render GET for About
+app.get('/about',function(req,res){
+  var context = {};
+  context.dataList = "";
+  res.render('about', context);
 });
 
 app.use(function(req,res){
