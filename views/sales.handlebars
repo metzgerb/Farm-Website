@@ -1,23 +1,36 @@
 <h1>Sales</h1>
 
-{{#if dataList}}
-<h3>Query String Data:</h3>
-<ul>
-  {{#each dataList}}
-    <li>{{this.name}}: {{this.value}}
-  {{/each}}
-</ul>
-{{else}}
-<h3>You did not send any data in the query string of the POST request.</h3>
-{{/if}}
+<p align="center">We also sell machinery, parts, accessories and supplies to help keep your farm going.</p>
 
-{{#if bodyList}}
-<h3>Body Data:</h3>
-<ul>
-  {{#each bodyList}}
-    <li>{{this.name}}: {{this.value}}
-  {{/each}}
-</ul>
+<p align="center">Search our inventory of new and used items below to see what we have available today!</p>
+<br>
+<form action="/sales">
+   <p align="center"><label>Search Criteria: </label><input type="text" name="search"/><input type="submit" value="Search"/><p>
+</form>
+<hr>
+{{#if results}}
+   <table>
+      <thead>
+         <th>ID</th>
+         <th>Image</th>
+         <th>Description</th>
+         <th>Condition</th>
+         <th>Price</th>
+         <th>No. in stock</th>
+      </thead>
+      <tbody>
+         {{#each results}}
+            <tr>
+               <td align="left">{{this.id}}</td>
+               <td align="center"><img src="img/inventory/{{this.id}}.jpg" height="100px"></td>
+               <td align="left">{{this.descript}}</td>
+               <td align="center">{{this.cond}}</td>
+               <td>{{this.price}}</td>
+               <td>{{this.stock}}</td>            
+            </tr>
+         {{/each}}
+      </tbody>
+   </table>
 {{else}}
-<h3>You did not send any data in the body of the POST request.</h3>
+   <h3 style="margin-bottom: 15px;">No Matching Items</h3>
 {{/if}}
