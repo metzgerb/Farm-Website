@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 8545);
+app.set('port', 8554);
 app.use(express.static('static'));
 
 //render GET for homepage
