@@ -5,6 +5,7 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 var credentials = require('./credentials.js');
 var request = require('request');
+var mysql = require('./dbcon.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -68,6 +69,51 @@ app.get('/service',function(req,res){
 app.get('/about',function(req,res){
 
   res.render('about');
+});
+
+app.get('/reset-table',function(req,res,next){
+  var context = {};
+  mysql.pool.query("DROP TABLE IF EXISTS inventory", function(err){
+    var createString = "CREATE TABLE inventory(" +
+    "id VARCHAR(8)," +
+    "descript VARCHAR(50), " +
+    "price DECIMAL(9,2) UNSIGNED, " +
+    "cond VARCHAR(5), " +
+    "stock TINYINT(3) UNSIGNED)";
+    mysql.pool.query(createString, function(err){
+      if(err){
+         next(err);
+         return;
+      }
+      context.results = "Table reset";
+      res.render('db',context);
+    })
+  });
+});
+
+app.get('/insert',function(req,res,next){
+  var context = {};
+  var insertString = "INSERT INTO inventory (" +
+  "`id`, `descript`, `price`, `cond`, `stock`) VALUES "+
+  "('JD1023E','2013 John Deere 1023E Tractor', 10755.00,'Used',1)," +
+  "('CIHMX270','2000 Case IH MX270 Tractor', 49900.00,'Used',1)," +
+  "('KM126GX','Kubota M126GX Tractor', 60000.00,'Used',1)," +
+  "('JDTire','John Deere Tractor Tires', 101.00,'New',5)," +
+  "('CIHOil','Case IH 10W-40 Oil - 1 Gal', 17.00,'New',23)," +
+  "('THB60','Tomahawk 60in. Smooth Bucket', 365.00,'new',2)," +
+  "('WWRC15P','Smucker WWRC15-P - 15ft. Weed Wiper 3 Point Hitch Mount', 2579.99,'Used',1)," +
+  "('HIDKit','HID Light Kit', 184.00,'New',4)," +
+  "('T4DLT','Traveller 4DLT Heavy-Duty Battery', 179.99,'New',3)," +
+  "('NHMC28','1999 New Holland MC28 Lawnmower', 230.00,'Used',1)";
+  
+  mysql.pool.query(insertString, function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Inserted data";
+    res.render('db',context);
+  });
 });
 
 app.use(function(req,res){
