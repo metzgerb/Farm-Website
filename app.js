@@ -107,7 +107,7 @@ app.get('/about',function(req,res){
   res.render('about');
 });
 
-app.get('/reset-table',function(req,res,next){
+/*app.get('/reset-table',function(req,res,next){
   var context = {};
   mysql.pool.query("DROP TABLE IF EXISTS inventory", function(err){
     var createString = "CREATE TABLE inventory(" +
@@ -151,7 +151,7 @@ app.get('/insert',function(req,res,next){
     res.render('db',context);
   });
 });
-
+*/
 app.use(function(req,res){
   res.status(404);
   res.render('404');
