@@ -1,12 +1,44 @@
 <h1>FE Service & Repair</h1>
+<h3 align="center">Welcome to Farm Equipment Service & Repair!</h3>
+<p style="text-align:center; padding-bottom: 15px;">We offer friendly, quality sales and service for all of your farming needs</p>
+
+<div align="center">
+   <img class="carousel" src="img/tractor.jpg" alt="John Deere Tractor" title="Source: https://www.deere.com" width="750px" height="422px"/>
+   <img class="carousel" src="img/shop.jpg" alt="Shop Photo" title="Source: https://www.ntc.edu" width="750px" height="422px"/>
+   <img class="carousel" src="img/harvester.jpg" alt="Case IH Harvester" title="Source: https://www.caseih.com" width="750px" height="422px"/>
+</div>
+<!-- The dots/circles Source:https://www.w3schools.com/howto/howto_js_slideshow.asp-->
+<div style="text-align:center; padding-top:10px;">
+  <span class="dot" onclick="changeImage(1)"></span> 
+  <span class="dot" onclick="changeImage(2)"></span> 
+  <span class="dot" onclick="changeImage(3)"></span> 
+</div>
 
 {{#if dataList}}
-<h3>Query String Data:</h3>
-<ul>
-  {{#each dataList}}
-    <li>{{this.name}}: {{this.value}}
-  {{/each}}
-</ul>
+   <h3>Recent {{commodity}} Prices</h3>
+   <table>
+      <thead>
+         <th>Date</th>
+         <th>Open</th>
+         <th>High</th>
+         <th>Low</th>
+         <th>Settle</th>
+      </thead>
+      <tbody>
+         {{#each dataList}}
+            <tr>
+               <td>{{this.date}}</td>
+               <td>${{this.op}}</td>
+               <td>${{this.hi}}</td>
+               <td>${{this.lo}}</td>
+               <td>${{this.settle}}</td>
+            </tr>
+         {{/each}}
+      </tbody>
+   </table>
 {{else}}
-<h3>You did not send any data in the GET request.</h3>
+   <h3>Error! No {{commodity}} Data available at this time.</h3>
 {{/if}}
+
+<script src="js/carousel.js"></script>
+<script src="js/changeImage.js"></script>

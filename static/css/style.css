@@ -55,17 +55,22 @@ nav li a.active {
    position: relative;
 }
 
+.footer p {
+   padding: 0;
+   margin: 0;
+}
+
 /*Body settings*/
 body {
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 50px;
 }
 
-h1 {
+h1, h3 {
    text-align: center;
 }
 
-h2, p {
+h2, h3, p {
    padding-left: 15px;
    margin-top: 15px;
 }
@@ -102,9 +107,39 @@ ul.services ul,ol {
 
 .div-scroll {
    margin: 15px;
-   height:375px;
+   height:400px;
    width:85%;
    border:1px solid #ccc;
    font:16px;
    overflow:auto;
+}
+
+/* The dots/bullets/indicators SOURCE: https://www.w3schools.com/howto/howto_js_slideshow.asp*/
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.active, .dot:hover {
+  background-color: #ef0000;
+}
+table, th, tr, td {
+   border-collapse: collapse;
+   border: solid 1px;
+   padding: 10px;
+}
+table {
+
+   margin: 15px auto;
+   text-align: right;
+}
+
+th {
+   text-align: center;
+   
 }
