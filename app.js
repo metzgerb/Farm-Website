@@ -55,7 +55,7 @@ app.get('/',function(req,res){
 
 //render GET for Sales
 app.get('/sales',function(req,res,next){
-   var context = {};
+   /*var context = {};
    //check if search term found and build where clause
    if(req.query.search) {
       var search = '%'+req.query.search+'%';
@@ -94,7 +94,8 @@ app.get('/sales',function(req,res,next){
          
          res.render('sales', context);
       });
-   }
+   }*/
+   res.render('sales');
 });
 
 //render GET for Service
